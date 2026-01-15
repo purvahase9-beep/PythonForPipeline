@@ -3,28 +3,22 @@ pipeline {
 
     stages {
 
-        stage('Clone Repository') {
-            steps {
-                git 'https://github.com/purvahase9-beep/PythonForPipeline.git'
-            }
-        }
-
         stage('Setup Python Environment') {
             steps {
-                bat 'python --version'
-                bat 'pip install -r requirements.txt'
+                powershell '& "C:\\Users\\Ruchita\\AppData\\Local\\Python\\bin\\python.exe" --version'
+                powershell '& "C:\\Users\\Ruchita\\AppData\\Local\\Python\\bin\\python.exe" -m pip install -r requirements.txt'
             }
         }
 
         stage('Run Flask App Test') {
             steps {
-                bat 'python -c "import flask; print(flask.__version__)"'
+                powershell '& "C:\\Users\\Ruchita\\AppData\\Local\\Python\\bin\\python.exe" -c "import flask; print(flask.__version__)"'
             }
         }
 
         stage('Build Success') {
             steps {
-                echo 'Flask application build successful!'
+                echo 'Flask Jenkins pipeline executed successfully!'
             }
         }
     }
