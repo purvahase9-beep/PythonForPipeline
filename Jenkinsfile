@@ -11,22 +11,20 @@ pipeline {
 
         stage('Check Python') {
             steps {
-                bat 'where python'
-                bat 'python --version'
+                bat "\"C:\\Users\\Purva\\AppData\\Local\\Programs\\Python\\Python314\\python.exe\" --version"
             }
         }
 
         stage('Setup Python Environment') {
             steps {
-                bat 'pip install --upgrade pip'
-                bat 'pip install -r requirements.txt'
+                bat "\"C:\\Users\\Purva\\AppData\\Local\\Programs\\Python\\Python314\\python.exe\" -m pip install --upgrade pip"
+                bat "\"C:\\Users\\Purva\\AppData\\Local\\Programs\\Python\\Python314\\python.exe\" -m pip install -r requirements.txt"
             }
         }
 
         stage('Run Flask App Test') {
             steps {
-                 bat "\"C:\\Users\\Purva\\AppData\\Local\\Programs\\Python\\Python314\\python.exe\" app.py"
-
+                bat "\"C:\\Users\\Purva\\AppData\\Local\\Programs\\Python\\Python314\\python.exe\" app.py"
             }
         }
 
