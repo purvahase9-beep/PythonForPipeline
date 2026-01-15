@@ -16,9 +16,16 @@ pipeline {
             }
         }
 
-        stage('Run App') {
+        stage('Setup Python Environment') {
             steps {
-                bat 'python app.py'
+                bat 'pip install --upgrade pip'
+                bat 'pip install -r requirements.txt'
+            }
+        }
+
+        stage('Run Flask App Test') {
+            steps {
+                bat '"C:\Users\Purva\AppData\Local\Programs\Python\Python314\python.exe" app.py'
             }
         }
 
