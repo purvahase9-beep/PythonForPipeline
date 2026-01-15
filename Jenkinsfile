@@ -3,22 +3,27 @@ pipeline {
 
     stages {
 
-        stage('Setup Python Environment') {
+        stage('Checkout SCM') {
             steps {
-                powershell '& "C:\\Users\\Ruchita\\AppData\\Local\\Python\\bin\\python.exe" --version'
-                powershell '& "C:\\Users\\Ruchita\\AppData\\Local\\Python\\bin\\python.exe" -m pip install -r requirements.txt'
+                checkout scm
             }
         }
 
-        stage('Run Flask App Test') {
+        stage('Check Python') {
             steps {
-                powershell '& "C:\\Users\\Ruchita\\AppData\\Local\\Python\\bin\\python.exe" -c "import flask; print(flask.__version__)"'
+                bat 'python --version'
+            }
+        }
+
+        stage('Run App') {
+            steps {
+                bat 'python app.py'
             }
         }
 
         stage('Build Success') {
             steps {
-                echo 'Flask Jenkins pipeline executed successfully!'
+                echo 'Pipeline executed successfully'
             }
         }
     }
