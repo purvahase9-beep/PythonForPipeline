@@ -25,7 +25,8 @@ pipeline {
 
         stage('Run Flask App Test') {
             steps {
-                bat '"C:\Users\Purva\AppData\Local\Programs\Python\Python314\python.exe" app.py'
+                 bat "\"C:\\Users\\Purva\\AppData\\Local\\Programs\\Python\\Python314\\python.exe\" app.py"
+
             }
         }
 
